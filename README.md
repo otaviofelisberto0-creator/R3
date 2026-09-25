@@ -1,14 +1,41 @@
-# Dashboard de Conversão - pacote GitHub Pages
+# Dashboard Conversão - Pacote R3 GitHub Pages
 
-## Conteúdo
-- `index.html`: dashboard e conversores CSV para JSON.
-- `dados/.gitkeep`: mantém a pasta de dados no repositório.
+## Estrutura
 
-## Fluxo de atualização
-1. Abra o dashboard publicado.
-2. Selecione o CSV ND ou BL. Os arquivos são independentes.
-3. Clique em **Converter CSV ... para JSON**.
-4. Clique em **Baixar JSON ...**.
-5. No GitHub, abra a pasta `dados` e envie o JSON baixado.
+- `index.html`: dashboard e conversor atualizado.
+- `dados/manifest.json`: relação dos JSONs publicados.
+- `.nojekyll`: indica publicação estática no GitHub Pages.
 
-O nome do arquivo usa a maior data válida da coluna `DT`, no padrão `ND-DD-MM.json` ou `BL-DD-MM.json`.
+## Padrão dos arquivos
+
+O nome é gerado pela coluna `NR_ANO_MES`:
+
+- `202606` gera `ND-26-06.json` ou `BL-26-06.json`.
+- `202607` gera `ND-26-07.json` ou `BL-26-07.json`.
+
+## Fluxo recomendado
+
+1. Abra o `index.html` atualizado.
+2. Selecione e processe somente o CSV ND.
+3. Confira na mensagem o nome e o tamanho estimado.
+4. Baixe o JSON ND.
+5. Aguarde a mensagem de memória liberada.
+6. Selecione e processe o CSV BL.
+7. Baixe o JSON BL.
+8. Envie os dois JSONs para a pasta `dados`.
+9. Atualize `dados/manifest.json` com os nomes reais.
+
+Exemplo:
+
+```json
+{
+  "arquivos": [
+    "ND-26-06.json",
+    "BL-26-06.json"
+  ]
+}
+```
+
+## Publicação
+
+Mantenha `index.html`, `README.md`, `.nojekyll` e a pasta `dados` na raiz da branch configurada no GitHub Pages.
